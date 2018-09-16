@@ -18,7 +18,7 @@ Ultilizaremos, principalmente, a linguagem [C/C++](https://en.cppreference.com/w
 
 ## Avaliações
 
-Trabalhos que devem ser postados no Github e provas.
+Trabalhos que devem ser postados no Github e provas (veja a wiki deste repositório).
 
 ## Bibliografia
 
