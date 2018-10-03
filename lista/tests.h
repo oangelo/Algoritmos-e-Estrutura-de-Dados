@@ -6,13 +6,45 @@ TEST(LIST, empty) {
 
 TEST(LIST, get_node_empty_list) {
   List list;
-  //ASSERT_EXCEPT(list.GetFirst(),);
+  ASSERT_THROW(list.GetFirst(), std::invalid_argument);
 }
 
 TEST(LIST, add_node_to_head) {
   List list;
   list.AddNodeInit(2);
-  ASSERT_TRUE(list.GetFirst() == 2);
+  ASSERT_EQ(list.GetFirst(), 2);
+}
+
+TEST(LIST, is_empty) {
+  List list;
+  ASSERT_TRUE(list.IsEmpty());
+}
+
+TEST(LIST, pop) {
+  List list;
+  ASSERT_THROW(list.PopFirst(),std::invalid_argument);
+}
+
+TEST(LIST, pop_one_from_one) {
+  List list;
+  list.AddNodeInit(2);
+  list.PopFirst();
+  ASSERT_TRUE(list.IsEmpty());
+}
+
+TEST(LIST, pop_one_from_two) {
+  List list;
+  list.AddNodeInit(1);
+  list.AddNodeInit(2);
+  list.PopFirst();
+  list.PopFirst();
+  ASSERT_TRUE(list.IsEmpty());
+}
+
+TEST(LIST, not_is_empty) {
+  List list;
+  list.AddNodeInit(2);
+  ASSERT_FALSE(list.IsEmpty());
 }
 
 TEST(NODES, inf_only) {
