@@ -1,3 +1,85 @@
+TEST(LIST, has_first) {
+  List list;
+  list.AddNodeEnd(2);
+  list.AddNodeEnd(3);
+  list.AddNodeEnd(4);
+  ASSERT_TRUE(list.HasValue(4));
+}
+
+TEST(LIST, has_last) {
+  List list;
+  list.AddNodeEnd(2);
+  list.AddNodeEnd(3);
+  list.AddNodeEnd(4);
+  ASSERT_TRUE(list.HasValue(2));
+}
+
+TEST(LIST, has_value) {
+  List list;
+  list.AddNodeEnd(2);
+  list.AddNodeEnd(3);
+  list.AddNodeEnd(4);
+  ASSERT_TRUE(list.HasValue(3));
+}
+
+TEST(LIST, has_not_value) {
+  List list;
+  list.AddNodeEnd(2);
+  list.AddNodeEnd(3);
+  list.AddNodeEnd(4);
+  ASSERT_FALSE(list.HasValue(5));
+}
+
+
+TEST(LIST, get_first_add_end) {
+  List list;
+  list.AddNodeEnd(2);
+  list.AddNodeEnd(3);
+  list.AddNodeEnd(4);
+  ASSERT_EQ(list.GetFirst(), 2);
+}
+
+TEST(LIST, get_last_node_empty_list) {
+  List list;
+  ASSERT_THROW(list.GetLast(), std::invalid_argument);
+}
+
+TEST(LIST, get_last_node) {
+  List list;
+  list.AddNodeInit(2);
+  list.AddNodeInit(3);
+  list.AddNodeInit(4);
+  ASSERT_EQ(list.GetLast(), 2);
+}
+
+TEST(LIST, pop_last_node) {
+  List list;
+  list.AddNodeInit(2);
+  list.AddNodeInit(3);
+  list.AddNodeInit(4);
+  list.PopLast();
+  ASSERT_EQ(list.GetLast(), 3);
+}
+
+TEST(LIST, add_one_last_node) {
+  List list;
+  list.AddNodeEnd(2);
+  ASSERT_EQ(list.GetLast(), 2);
+}
+
+TEST(LIST, add_two_last_node) {
+  List list;
+  list.AddNodeEnd(2);
+  list.AddNodeEnd(3);
+  ASSERT_EQ(list.GetLast(), 3);
+}
+
+
+TEST(LIST, pop_last_empty) {
+  List list;
+  ASSERT_THROW(list.PopLast(), std::invalid_argument);
+}
+
 TEST(LIST, empty) {
   List list;
   ASSERT_TRUE(list.first == NULL);
@@ -15,12 +97,14 @@ TEST(LIST, add_node_to_head) {
   ASSERT_EQ(list.GetFirst(), 2);
 }
 
+
+
 TEST(LIST, is_empty) {
   List list;
   ASSERT_TRUE(list.IsEmpty());
 }
 
-TEST(LIST, pop) {
+TEST(LIST, pop_empty) {
   List list;
   ASSERT_THROW(list.PopFirst(),std::invalid_argument);
 }
